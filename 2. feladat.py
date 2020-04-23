@@ -19,7 +19,7 @@ def kiiras(a):
     for i in range(a):
         while True:
             try:
-                szam=int(input(f"Adja meg a(z) {i}. pénzösszeget: "))
+                szam=int(input(f"Adja meg a(z) {i+1}. pénzösszeget: "))
                 if szam<1 or szam>100000:
                     raise
                 print(eredmeny(szam,ermek))
