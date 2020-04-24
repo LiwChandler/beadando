@@ -11,23 +11,23 @@ def helyes():
             if "@" not in cim:
                 print("A megadott email cím nem tartalmaz '@'-ot!")
                 continue
-            domain=cim[cim.rfind("@"):]
+            domain=cim[cim.find("@")+1:]
             if domain.find(".")==-1:
                 print("A megadott e-mail cím vége nem megfelelő (pl.: '.hu', '.com')!")
                 continue
             if domain[domain.rfind("."):] not in domainveg:
                 print("A megadott domain vége nem engedélyezett!")
                 continue
-            if cim[cim.rfind("@")+1]!=cim[cim.rfind("@")+1].lower():
+            if cim[cim.find("@")+1]!=cim[cim.find("@")+1].lower():
                 print("A domain első betűje nem lehet nagybetű!")
                 continue
-            if cim.rfind("@")==0:
+            if cim.find("@")==0:
                 print("Az e-mail cím nem tartalmaz azonosítót!")
                 continue
 
             flag1=None
             flag2=None
-            for i in cim[:cim.rfind("@")+1]:
+            for i in cim[:cim.find("@")]:
                 if i in tiltott_karakterek:
                     flag1=True
             for i in domain:
@@ -40,7 +40,7 @@ def helyes():
                 print("A domain tiltott karaktert tartalmaz!")
                 continue
             if flag1 is True and flag2 is True:
-                print("Az azonosító és a domain is tartalmaz tiltott karaktert!")
+                print("Az azonosító és a domain is tiltott karaktert tartalmaz!")
                 continue
             print("A megadott e-mail cím helyes!")
         except:
