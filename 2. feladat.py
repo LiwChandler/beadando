@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def eredmeny(b,c):
     c=np.asarray(c)
     ermek_sorrendben=np.sort(c)[::-1]
