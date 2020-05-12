@@ -2,49 +2,39 @@ domainveg=[".com",".hu"]
 tiltott_karakterek=[" ","_",",","?","!","*",":",";"]
 
 
-def helyes():
-    while True:
-        try:
-            cim=str(input("Adjon meg egy e-mail címet (stop beírása esetén kilép a programból): "))
-            if cim=="stop":
-                break
-            if "@" not in cim:
-                print("A megadott email cím nem tartalmaz '@'-ot!")
-                continue
-            domain=cim[cim.find("@")+1:]
-            if domain.find(".")==-1:
-                print("A megadott e-mail cím vége nem megfelelő (pl.: '.hu', '.com')!")
-                continue
-            if domain[domain.rfind("."):] not in domainveg:
-                print("A megadott domain vége nem engedélyezett!")
-                continue
-            if cim[cim.find("@")+1]!=cim[cim.find("@")+1].lower():
-                print("A domain első betűje nem lehet nagybetű!")
-                continue
-            if cim.find("@")==0:
-                print("Az e-mail cím nem tartalmaz azonosítót!")
-                continue
+def helyes(a):
+    if "@" not in a:
+        return "A megadott email cím nem tartalmaz '@'-ot!"
+    domain=a[a.find("@")+1:]
+    if domain.find(".")==-1:
+        return "A megadott e-mail cím vége nem megfelelő (pl.: '.hu', '.com')!"
+    if domain[domain.rfind("."):] not in domainveg:
+        return "A megadott domain vége nem engedélyezett!"
+    if a[a.find("@")+1]!=a[a.find("@")+1].lower():
+        return "A domain első betűje nem lehet nagybetű!"
+    if a.find("@")==0:
+        return "Az e-mail cím nem tartalmaz azonosítót!"
 
-            flag1=None
-            flag2=None
-            for i in cim[:cim.find("@")]:
-                if i in tiltott_karakterek:
-                    flag1=True
-            for i in domain:
-                if i in tiltott_karakterek:
-                    flag2=True
-            if flag1 is True and flag2 is None:
-                print("Az azonosító tiltott karaktert tartalmaz!")
-                continue
-            if flag1 is None and flag2 is True:
-                print("A domain tiltott karaktert tartalmaz!")
-                continue
-            if flag1 is True and flag2 is True:
-                print("Az azonosító és a domain is tiltott karaktert tartalmaz!")
-                continue
-            print("A megadott e-mail cím helyes!")
-        except:
-            print("Helyes e-mail címet adjon meg!")
+    flag1=None
+    flag2=None
+    for i in a[:a.find("@")]:
+        if i in tiltott_karakterek:
+            flag1=True
+    for i in domain:
+        if i in tiltott_karakterek:
+            flag2=True
+    if flag1 is True and flag2 is None:
+        return "Az azonosító tiltott karaktert tartalmaz!"
+    if flag1 is None and flag2 is True:
+        return "A domain tiltott karaktert tartalmaz!"
+    if flag1 is True and flag2 is True:
+        return "Az azonosító és a domain is tiltott karaktert tartalmaz!"
+    return "A megadott e-mail cím helyes!"
 
 
-helyes()
+while True:
+    cim=str(input("Adjon meg egy e-mail címet (stop beírása esetén kilép a programból): "))
+    if cim=="stop":
+        break
+    print(helyes(cim))
+    print()
