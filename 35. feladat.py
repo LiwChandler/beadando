@@ -7,8 +7,7 @@ def mutat(ls):
         return "Az ön listája üres."
     elemek=[]
     elofordulas=[]
-    ls=np.asarray(ls)
-    np.sort(ls)
+    ls=np.sort(np.asarray(ls))
     for i in ls:
         if i not in elemek:
             elemek.append(i)
@@ -21,11 +20,12 @@ def mutat(ls):
     if max(elofordulas)>len(ls)/2:
         for i in range(len(elofordulas)):
             if elofordulas[i]==max(elofordulas):
-                return f"{elemek[i]} ({max(elofordulas)}x szerepel egy {len(ls)} hosszú listában)"
+                return f"{elemek[i]} ({max(elofordulas)}x szerepel egy {len(ls)} hosszú listában)\n"
     return ""
 
+
 while True:
-    a=list(input("Adja meg egy lista elemeit vesszővel elválasztva (stop beírása esetén kilép a programból: ").split(","))
+    a=input("Adja meg egy lista elemeit vesszővel elválasztva (stop beírása esetén kilép a programból): ").split(",")
     if a==['stop']:
         break
     print(mutat(a))
