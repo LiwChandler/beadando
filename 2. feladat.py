@@ -26,17 +26,19 @@ def kiiras(a):
                 print(eredmeny(szam,ermek))
                 break
             except:
-                print("Adjon meg egy 1 és 100000 közötti számot.")
+                print("Egy 1 és 100000 közötti számot adjon meg!")
 
+
+ermek=[1,2,5,10,50,100]
 
 while True:
     try:
-        dbszam=int(input("A pénzösszegek darabszáma: "))
+        dbszam=int(input("A pénzösszegek darabszáma (0 beírása esetén kilép a programból): "))
+        if dbszam==0:
+            break
         if dbszam<1 or dbszam>1000:
             raise
-        break
+        kiiras(dbszam)
+        print()
     except:
         print("Egy 1 és 1000 közötti számot adjon meg!")
-
-ermek=[1,2,5,10,50,100]
-kiiras(dbszam)
