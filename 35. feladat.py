@@ -3,8 +3,6 @@ import matplotlib.pyplot as plt
 
 
 def mutat(ls):
-    if ls==['']:
-        return "Az ön listája üres."
     elemek=[]
     elofordulas=[]
     ls=np.sort(np.asarray(ls))
@@ -25,7 +23,13 @@ def mutat(ls):
 
 
 while True:
-    a=input("Adja meg egy lista elemeit vesszővel elválasztva (stop beírása esetén kilép a programból): ").split(",")
-    if a==['stop']:
+    a=input("Adja meg egy lista elemeit vesszővel elválasztva (stop beírása esetén kilép a programból): ")
+    if a=="stop":
         break
-    print(mutat(a))
+    if a=="":
+        print("Az ön listája üres.")
+        continue
+    if a[0]=="," or a[len(a)-1]=="," or ",," in a:
+        print("Csak a megfelelő helyekre tegyen vesszőt!")
+    else:
+        print(mutat(a.split(",")))
