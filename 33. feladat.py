@@ -36,5 +36,4 @@ while True:
     cim=str(input("Adjon meg egy e-mail címet (stop beírása esetén kilép a programból): "))
     if cim=="stop":
         break
-    print(helyes(cim))
-    print()
+    print(helyes(cim),"\n")
